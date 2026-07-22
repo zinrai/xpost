@@ -14,6 +14,11 @@ import (
 const endpoint = "/2/tweets"
 
 func main() {
+	if len(os.Args) > 1 && (os.Args[1] == "-version" || os.Args[1] == "--version") {
+		printVersion()
+		os.Exit(0)
+	}
+
 	if err := run(); err != nil {
 		fmt.Fprintln(os.Stderr, "xpost:", err)
 		os.Exit(1)
